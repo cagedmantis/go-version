@@ -31,12 +31,13 @@ func TestIsValid(t *testing.T) {
 		{"go1.beta", false},
 		{"gobeta", false},
 		{"go1.1betarc1", false},
+		{"go1.2.3", true},
 	}
 	for idx, tc := range testCases {
 		t.Run(fmt.Sprintf("Test=%d", idx), func(t *testing.T) {
 			gotValid := IsValid(tc.goVer)
 			if gotValid != tc.wantValid {
-				t.Errorf("IsValid(%q) want=%t got=%t", tc.goVer, tc.wantValid, gotValid)
+				t.Errorf("IsValid(%q) = %t, want %t", tc.goVer, gotValid, tc.wantValid)
 			}
 		})
 	}
